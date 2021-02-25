@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Biblioteca.Dto.libroDto>
+
+@{
+    ViewData["Title"] = "Libros";
+}
+
+<h1>Listado</h1>
+
+<p>
+    <a asp-action="Create">Crear nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ISBN
+            </th>
+            <th>
+                Editorial
+            </th>
+            <th>
+                Título
+            </th>
+            <th>
+                Sinopsis
+            </th>
+            <th>
+                Páginas
+            </th>
+            <th>
+                Autores
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.isbn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.editorialNombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sinopsis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nPaginas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.autoresNombre)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

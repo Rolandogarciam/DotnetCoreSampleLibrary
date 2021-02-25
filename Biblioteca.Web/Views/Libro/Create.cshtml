@@ -1,0 +1,64 @@
+﻿@model Biblioteca.Web.Models.libroModel
+
+@{
+    ViewData["Title"] = "Crear Libro";
+}
+
+<h1>Create</h1>
+
+<h4>libroDto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">ISBN</label>
+                <input asp-for="isbn" class="form-control" />
+                <span asp-validation-for="isbn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Editorial</label>
+                <br />
+                <select asp-for="editorialId" asp-items="@Model.editoriales">
+                    <option value="0">Seleccione</option>
+                </select>
+                <span asp-validation-for="editorialId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Título</label>
+                <input asp-for="titulo" class="form-control" />
+                <span asp-validation-for="titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Sinopsis</label>
+                <input asp-for="sinopsis" class="form-control" />
+                <span asp-validation-for="sinopsis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label"># Páginas</label>
+                <input asp-for="nPaginas" class="form-control" />
+                <span asp-validation-for="nPaginas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Editorial</label>
+                <br />
+                <select public decimal editorialId { get; set; } asp-for="autoresId" asp-items="@Model.autores">
+                    <option value="0">Seleccione</option>
+                </select>
+                <span asp-validation-for="autoresId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver al listado</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
